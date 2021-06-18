@@ -1,6 +1,12 @@
 <h1>Artists</h1>
-<ul>
-  <% @artists.each do |artist| %>
-    <li><%= link_to artist.name, artist_path(artist) %></li>
-  <% end %>
-</ul>
+<% if @artists.nil? || !@artists.any? then %>
+  <div>Artist not found</div>
+<% else %>
+  <ul>
+    <% @artists.each do |artist| %>
+      <li>
+        <%= link_to artist.name, artist_songs_path(artist) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
